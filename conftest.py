@@ -1,7 +1,10 @@
 import pytest
 import requests
 
-
+# By placing disable_network_calls() in conftest.py and adding the autouse=True option,
+# you ensure that network calls will be disabled in every test across the suite.
+# Any test that executes code calling requests.get() will raise a RuntimeError indicating that
+# an unexpected network call would have occurred.
 @pytest.fixture(autouse=True)
 def disable_network_calls(monkeypatch):
     def stunted_get():

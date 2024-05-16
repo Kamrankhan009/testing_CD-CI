@@ -55,7 +55,7 @@ workflows:
   example:
     jobs:
       - test
-      - build:
+      - build-and-test:
           requires:
             - test
       - deploy:
